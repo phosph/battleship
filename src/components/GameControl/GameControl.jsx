@@ -7,9 +7,9 @@ const levels = ['easy', 'medium', 'hard'];
 export const GameControl = observer(({ getGame }) => {
   const game = getGame();
   return (
-    <div className="mb-4">
+    <div className="mb-4 flex flex-wrap">
       <button
-        className="btn mx-2"
+        className="btn mr-2"
         onClick={() => (game.isPaused ? () => game.pausePlayGame() : game.startGame())}
         disabled={!game || (game.isGaming && !game.isPaused) || game.isGameOver}
       >
@@ -30,9 +30,10 @@ export const GameControl = observer(({ getGame }) => {
       >
         <FontAwesomeIcon icon="pause" />
       </button>
-      {!!game && <span className="text-white mr-2">Level: {levels[game.level]}</span>}
-      {!!game && game.isGaming && (
-        <span className="text-white">| {game.isUserTurn ? 'user' : 'computer'} turn</span>
+      {!!game && (
+        <p className="whitespace-nowrap text-white mr-2 mt-2">
+          Level: {levels[game.level]}
+        </p>
       )}
     </div>
   );
