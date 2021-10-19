@@ -11,8 +11,8 @@ export const EndGamePrompt = observer(({ getGame }) => {
 
   useAutorunWithSubscription(() => {
     const subscription = game.gameStatusObervable.subscribe({
-      next({ userWin }) {
-        setUserWin(userWin);
+      next({ userWins }) {
+        setUserWin(userWins);
         setShow(true);
         setTimeout(() => setShow(false), 2000);
       },
